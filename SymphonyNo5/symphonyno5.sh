@@ -7,34 +7,34 @@
 
 usage() {
   scriptname=`basename $0`
-  echo "Symphony No.5 Usage"
+  echo "Symphony No.5 使用方法"
   echo ""
-  echo "Create new project"
+  echo "建立新開發專案"
   echo "    $scriptname new projectname"
   echo ""
-  echo "Update/install git submodules from extensions.csv"
+  echo "根據 extensions.csv 更新/安裝 git submodules"
   echo "    $scriptname extensions"
   echo ""
-  echo "Compile all assets (Scripts & Styles)"
+  echo "編譯所有前端資源 (Scripts 與 Styles)"
   echo "    $scriptname compile"
   echo ""
-  echo "Compile Coffescript & Javascript (Google Closure minify)"
+  echo "編譯 Coffescript 與 Javascript (Google Closure minify)"
   echo "    $scriptname compile scripts"
   echo ""
-  echo "Compile CSS (Less, Sass or Stylus supported)"
+  echo "編譯 CSS (支援 Less, Sass 或 Stylus)"
   echo "    $scriptname compile styles"
   echo ""
-  echo "Set manifest & workspace directories' file permissions"
+  echo "設置 manifest 與 workspace 目錄的檔案權限"
   echo "    $scriptname setperms 0775 0664"
   echo ""
-  echo "Fix permissions - set manifest & workspace permission to those defined in manifest/config.php"
+  echo "修復權限 - 根據 manifest/config.php 設置 manifest 與 workspace 的檔案權限"
   echo "    $scriptname fixperms"
 }
 
 verifySymphonyRoot() {
   if [ ! -e index.php -a ! -d symphony ]
   then
-    echo "Error: It doesn't look like you're in the root directory of a Symphony project! Aborting."
+    echo "錯誤： 似乎您並不在一個 Symphony 專案的根目錄下！指令終止。"
     exit 1
   fi
 }
@@ -50,7 +50,7 @@ extensions() {
     done < "$filename"
     git submodule update --init
   else
-    echo "Error: Can't find an extensions.csv file! Aborting."
+    echo "錯誤：找不到 extensions.csv 檔案！指令終止。"
   fi
 }
 
@@ -249,10 +249,10 @@ new(){
     fi
   else
     echo ""
-    echo "Before you continue you will need to..."
-    echo "* create a MySQL database (recommend charset utf-8)"
-    echo "* create a username and password to connect to MySQL with"
-    echo "* setup your webserver (usually Apache) to serve your domain from `pwd`/$project"
+    echo "指令繼續之前，您必須先..."
+    echo "* 建立所需的 MySQL 資料庫 (請使用 utf-8 編碼)"
+    echo "* 建立管理 MySQL 資料庫的管理員名稱與密碼"
+    echo "* 設定網站伺服器（通常是 Apache）運行您的網站 `pwd`/$project"
   fi
 }
 
