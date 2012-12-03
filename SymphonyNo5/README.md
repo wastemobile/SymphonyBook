@@ -3,6 +3,12 @@
 * Version 0.3.0
 * Date: 3rd December 2012
 
+### 額外的使用方法
+
+Symphonyno5.sh 指令預設是先抓取 Symphony No.5 的官方倉儲（第74行），再根據其中的 extensions.csv 安裝外掛，因此建立完一個新專案後，需要將另外準備的外掛清單拷貝進來，再執行一次 `symphonyno5.sh extensions`，才會根據自己的設定一次安裝完所有外掛。
+
+由於使用此程序安裝的開發專案，預設是沒有遠端倉儲的（應該是為了讓開發者能夠對應到自己的遠端），因此可以考慮一種方式：開另一個獨立的 github repo，只維護一個 extensions.csv 外掛清單，以 submodule 的方式掛進開發專案。
+
 ## 概觀
 
 Symphony No.5 終端機命令列工具是一個用來輕鬆管理 [Symphony No.5](http://github.com/firegoby/symphonyno5.git) 的 bash script。
