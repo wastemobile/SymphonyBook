@@ -1,7 +1,21 @@
+## Symphony CMS
+
+Symphony CMS真的不算是個簡單的玩意，相較大多數的部落格系統、內容管理系統來說，它的安裝程序沒那麼容易、更新更是麻煩，使用的又是一般人根本不覺得算是個「開發語言」的XSLT，甚至於最近還有一種JSON超越XML的說法，讓它顯得更顯小眾。
+
+使用Symphony CMS（以下皆以Sym代稱） 可能必須俱備下列要求：
+
+1. 懂得使用 Git。Sym主程序擺在github，外掛（extensions）也採用git submodule管理，雖然人們還是可以直接下載壓縮檔、FTP上傳主機並進行安裝，但後續維護就很麻煩。
+2. 熟練XSLT。Sym的主要開發語言是XSLT。
+3. 懂得PHP。雖然單純的架站、使用第三方外掛，可以完全不碰PHP，但遇到始終沒人開發的功能，就麻煩了。對一般開發者來說，開發一個片段的PHP功能專供Sym使用、還得符合它的API與開發原則，會讓大多數習慣直接用PHP刻程式的人卻步。
+
+其實Sym還有另一個麻煩，就是開發環境與正式環境不容易切割。Sym將主機建置的資訊擺放在manifest目錄下，通常會用.gitignore排除同步更新，目前常見的方式是建立不同的目錄，例如 manifest.dev 與 manifest.prod，再使用 manifest link 到其中之一。
+
+設定檔有方法解決，但資料庫同步更麻煩。因為Sym's Extensions常常會異動資料庫，兩者的同步很麻煩。
+
 # Symphony No.5 Command Line Tool 終端機命令列工具
 
-* Version 0.3.0
-* Date: 3rd December 2012
+* Version 0.2.0
+* Date: 24th November 2012
 
 ## 概觀
 
@@ -35,6 +49,18 @@ Symphony No.5 終端機命令列工具是一個用來輕鬆管理 [Symphony No.5
 
     symphonyno5 extensions
 
+### 編譯所有前端資源檔，製成單一最小化的檔案，並更新 `master.xsl`
+
+    symphonyno5 compile
+
+### 只編譯 Coffescript & Javascript
+
+    symphonyno5 compile scripts
+
+### 只編譯 Less, Sass 或 Stylus 樣式表
+
+    symphonyno5 compile styles
+
 ### 設定目錄與檔案權限
 
     symphonyno5 setperms 0775 0664
@@ -43,16 +69,8 @@ Symphony No.5 終端機命令列工具是一個用來輕鬆管理 [Symphony No.5
 
     symphonyno5 fixperms
 
-## FAQ
-
-1. **為什麼所有 CSS 與 Javascript 編譯、最小化的功能都不見了？**
-
-  一個專用於這些功能的外掛 [Asset Compiler](http://github.com/firegoby/asset_compiler) 已經誕生了！不再使用命令列，使用 master.xsl 中的標籤就能控制，試試看！（ps. 如果還是想用CLI，就用 git 切回 `0.2.0` 版吧。）
-
 ## Changelog
 
-* 0.3.0 - 3 Dec 12
-  * Removed `compile` commands
 * 0.2.0 - 24 Nov 12
   * Remove Ant build script support
   * Compile javascript via Curl API call to Google Closure
