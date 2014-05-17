@@ -1,4 +1,4 @@
-Note1: 測試在 Mac 上使用 Sparkshare 管理。
+Note1: 測試在 Mac 上使用 Sparkshare 管理（修改）。
 
 Note2: 基本上這 repo 僅異動 Symphony Book 的部分。
 
